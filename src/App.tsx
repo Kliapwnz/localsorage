@@ -4,23 +4,23 @@ import './App.css';
 
 function App() {
 
-    const [value, setValue] = useState(0)
-    useEffect(()=>{
-        localStorage.setItem("counterValue", JSON.stringify(value))
-    },[value])
+    const [value, setValue] = useState<number>(0)
 
-    const incHandler = () => {
-        setValue(value + 1)
-    }
-    const setToLocalStorageHandler = () => {
-        localStorage.setItem("counterValue", JSON.stringify(value))
-    }
-    const getFromLocalStorageHandler = () => {
+    useEffect(() => {
         let valueAsString = localStorage.getItem("counterValue")
         if (valueAsString) {
             let newValue = JSON.parse(valueAsString)
             setValue(newValue)
         }
+    }, [])
+
+
+    useEffect(() => {
+        localStorage.setItem("counterValue", JSON.stringify(value))
+    }, [value])
+
+    const incHandler = () => {
+        setValue(value + 1)
     }
 
 
