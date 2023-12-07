@@ -10,7 +10,7 @@ function App() {
         setValue(value + 1)
     }
     const setToLocalStorageHandler = () => {
-
+        localStorage.setItem("counterValue", JSON.stringify(value))
     }
     const getFromLocalStorageHandler = () => {
 
