@@ -13,6 +13,14 @@ function App() {
         localStorage.setItem("counterValue", JSON.stringify(value))
     }
     const getFromLocalStorageHandler = () => {
+        let valueAsString = localStorage.getItem("counterValue")
+        if (valueAsString) {
+            let newValue = JSON.parse(valueAsString)
+            setValue(newValue)
+        }
+    }
+
+    const ClearLocalStorageHandler = () => {
 
     }
 
@@ -22,6 +30,7 @@ function App() {
             <button onClick={incHandler}>inc</button>
             <button onClick={setToLocalStorageHandler}>setToLocalStorage</button>
             <button onClick={getFromLocalStorageHandler}>getFromLocalStorage</button>
+            <button onClick={ClearLocalStorageHandler}>ClearLocalStorage</button>
         </div>
     );
 }
