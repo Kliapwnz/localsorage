@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
 
 function App() {
 
     const [value, setValue] = useState(0)
+    useEffect(()=>{
+        localStorage.setItem("counterValue", JSON.stringify(value))
+    },[value])
 
     const incHandler = () => {
         setValue(value + 1)
@@ -20,18 +23,11 @@ function App() {
         }
     }
 
-    const ClearLocalStorageHandler = () => {
-        localStorage.clear()
-        setValue(0)
-    }
 
     return (
         <div className="App">
             <h1>{value}</h1>
             <button onClick={incHandler}>inc</button>
-            <button onClick={setToLocalStorageHandler}>setToLocalStorage</button>
-            <button onClick={getFromLocalStorageHandler}>getFromLocalStorage</button>
-            <button onClick={ClearLocalStorageHandler}>ClearLocalStorage</button>
         </div>
     );
 }
