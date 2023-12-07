@@ -21,7 +21,8 @@ function App() {
     }
 
     const ClearLocalStorageHandler = () => {
-
+        localStorage.clear()
+        setValue(0)
     }
 
     return (
